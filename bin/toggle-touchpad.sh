@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Elan touchpad device name
-DEVICE="elan0718:00-04f3:30fd-touchpad"
+DEVICE=$(hyprctl devices | grep -i touchpad | xargs)
 
 # state file
 STATEFILE="$HOME/.cache/touchpad.state"
