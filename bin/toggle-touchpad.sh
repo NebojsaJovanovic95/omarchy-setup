@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Elan touchpad device name
-DEVICE=$(hyprctsl devices | grep -i touchpad | xargs)
+DEVICE=$(hyprctl devices | grep -i touchpad | xargs)
 if [ -z "$DEVICE" ]; then
   DEVICE=$(hyprctl devices | awk '/mice:/{f=1} f && /bcm5974/{print "bcm5974"; exit}')
 fi
