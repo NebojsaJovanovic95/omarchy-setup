@@ -1,0 +1,94 @@
+
+Here’s a **clean, save-to-file summary** of everything, with no extra explanation.
+You can copy-paste this as notes.
+
+---
+
+# Alienware AC16250 – Arch Linux Bluetooth Debug Summary
+
+## Hardware
+
+* Laptop: **Alienware AC16250**
+* Wireless chip: **MediaTek MT7925**
+
+  * Wi-Fi → PCIe (`mt7925e`) ✅ works
+  * Bluetooth → **USB device** ❌ missing
+
+## Current State (confirmed)
+
+* Firmware present:
+
+  * `/usr/lib/firmware/mediatek/mt7925/BT_RAM_CODE_MT7925_1_1_hdr.bin(.zst)`
+* Kernel: **6.18.2-arch** (new enough)
+* `btusb` driver loads, but:
+
+  * No `/sys/class/bluetooth`
+  * `bluetooth.service` skipped (“unmet condition”)
+  * `rfkill` shows Wi-Fi only, no Bluetooth
+* Conclusion:
+  **Bluetooth hardware is not being exposed to Linux at all**
+
+## Root Cause
+
+* Bluetooth power is controlled by the **EC (Embedded Controller)** + BIOS
+* EC is currently **not powering the Bluetooth USB device**
+* This is **below the OS** (not a driver, firmware, or Arch issue)
+
+## What WILL NOT fix it
+
+* Reinstalling bluez
+* Reinstalling firmware
+* Changing kernels
+* modprobe tricks
+* systemd changes
+
+## What TO DO (in order)
+
+### 1. Check BIOS settings (most important)
+
+Enter BIOS/UEFI and ensure:
+
+* **Wireless / Bluetooth: ENABLED**
+* Internal wireless devices enabled
+* **Fast Boot: DISABLED**
+
+Save and exit.
+
+### 2. EC (Embedded Controller) hard reset
+
+1. Power off laptop
+2. Unplug charger
+3. Hold power button **20–30 seconds**
+4. Wait another 30 seconds
+5. Plug charger back in
+6. Boot Linux
+
+### 3. After reboot, verify
+
+Run:
+
+```bash
+lsusb
+```
+
+You should see a **MediaTek Bluetooth device**.
+
+If yes, Bluetooth will then:
+
+* create `/sys/class/bluetooth`
+* allow `bluetooth.service` to start
+* work normally with BlueZ
+
+### 4. If still missing
+
+* Update BIOS to latest version
+* Repeat EC reset after BIOS update
+
+## Key Diagnostic Rule
+
+* **No MediaTek device in `lsusb` = Bluetooth is disabled by firmware**
+* Once it appears in `lsusb`, no Arch changes are needed
+
+---
+
+If Bluetooth comes back after reboot/EC reset, **nothing else needs to be configured**.
