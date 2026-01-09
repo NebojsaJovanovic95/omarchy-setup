@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Battle.net
+Comment=Launch Blizzard Battle.net with Proton Experimental
+Exec=/home/nebojsa/.steam/steam/steamapps/common/Proton\ -\ Experimental/proton run /home/nebojsa/.steam/steam/steamapps/compatdata/2906910801/pfx/drive_c/'Program Files (x86)'/Battle.net/Battle.net.exe
+Type=Application
+Terminal=false
+Icon=/home/nebojsa/.steam/steam/steamapps/common/Proton\ -\ Experimental/files/lib64/wine/battlenet.ico

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=ChatGPT
+Comment=ChatGPT Web App
+Exec=omarchy-launch-webapp --user-data-dir=/tmp/chatgpt-temp --disable-session-crashed-bubble --disable-infobars --no-sandbox --preload=/home/nebojsa/.local/share/chatgpt-preload.js https://chatgpt.com/
+Terminal=false
+Type=Application
+Icon=/home/nebojsa/.local/share/applications/icons/ChatGPT.png
+StartupNotify=true
+

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Knights of Honor II: Sovereign
+Comment=Play this game on Steam
+Exec=steam steam://rungameid/736820
+Icon=steam_icon_736820
+Terminal=false
+Type=Application
+Categories=Game;
