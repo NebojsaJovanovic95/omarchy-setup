@@ -2,7 +2,7 @@
 Name=YouTube
 Comment=Watch YouTube
 Icon=youtube
-Exec=env WLR_NO_HARDWARE_CURSORS=1 chromium --app=https://www.netflix.com  --enable-features=UseOzonePlatform,VaapiVideoDecoder --ozone-platform=x11 --use-gl=desktop --enable-gpu-rasterization --enable-zero-copy --force-compositing-mode --disable-gpu-driver-bug-workarounds --class=netflix
+Exec=env WLR_NO_HARDWARE_CURSORS=1 chromium --app=https://www.youtube.com  --enable-features=UseOzonePlatform,VaapiVideoDecoder --ozone-platform=x11 --use-gl=desktop --enable-gpu-rasterization --enable-zero-copy --force-compositing-mode --disable-gpu-driver-bug-workarounds --class=netflix
 Terminal=false
 Type=Application
 Categories=AudioVideo;Video;Network;
