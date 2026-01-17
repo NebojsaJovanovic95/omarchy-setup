@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Bootdev
 Comment=Play Boot.dev
-Icon=bootdev.png
+Icon=Boot.dev
 Exec=env WLR_NO_HARDWARE_CURSORS=1 chromium --app=https://boot.dev --ozone-platform=wayland --enable-features=UseOzonePlatform,VaapiVideoDecoder --wayland-app-id=bootdotdev
 Terminal=false
 Type=Application
